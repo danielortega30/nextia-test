@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 
-import { Post } from "../types";
 import { api } from "../services/jsonPlaceholder.service";
+import { updatePost } from "../store/slices/postsSlice";
+import { useAppDispatch } from "./useAppDispatch";
+import { useAppSelector } from "./useAppSelector";
 import { useNavigate } from "react-router-dom";
 
 export const useEditPost = (postId: string) => {
+  const dispatch = useAppDispatch();
+  const post = useAppSelector((state) =>
+    state.posts.posts.find((p) => p.id === Number(postId))
+  );
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -19,9 +25,9 @@ export const useEditPost = (postId: string) => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const post = await api.getPost(Number(postId));
-        setFormData(post);
-      } catch (_: unknown) {
+        const postData = post || (await api.getPost(Number(postId)));
+        setFormData(postData);
+      } catch (err) {
         setError("Error fetching post");
       } finally {
         setLoading(false);
@@ -29,13 +35,14 @@ export const useEditPost = (postId: string) => {
     };
 
     fetchPost();
-  }, [postId]);
+  }, [postId, post]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
     try {
-      await api.updatePost(Number(postId), formData);
+      const response = await api.updatePost(Number(postId), formData);
+      dispatch(updatePost(response));
       navigate(`/posts/${postId}`);
     } catch (err) {
       setError("Error updating post");

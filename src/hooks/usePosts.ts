@@ -1,27 +1,31 @@
-import { useEffect, useState } from "react";
+import { setError, setLoading, setPosts } from "../store/slices/postsSlice";
 
-import { Post } from "../types";
 import { api } from "../services/jsonPlaceholder.service";
+import { useAppDispatch } from "./useAppDispatch";
+import { useAppSelector } from "./useAppSelector";
+import { useEffect } from "react";
 
 export const usePosts = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
+  const { posts, loading, error } = useAppSelector((state) => state.posts);
 
   useEffect(() => {
     const fetchPosts = async () => {
+      dispatch(setLoading(true));
       try {
         const data = await api.getPosts();
-        setPosts(data);
-      } catch (err: unknown) {
-        setError("Error fetching posts");
+        dispatch(setPosts(data));
+      } catch (err) {
+        dispatch(setError("Error fetching posts"));
       } finally {
-        setLoading(false);
+        dispatch(setLoading(false));
       }
     };
 
-    fetchPosts();
-  }, []);
+    if (posts.length === 0) {
+      fetchPosts();
+    }
+  }, [dispatch, posts.length]);
 
   return { posts, loading, error };
 };
