@@ -33,6 +33,7 @@ A modern web application built with React, TypeScript, and Vite that demonstrate
 - Material UI Icons
 - React Router DOM
 - Axios
+- Redux Toolkit
 
 ## Getting Started
 
