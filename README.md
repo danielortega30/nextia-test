@@ -6,7 +6,7 @@ A modern web application built with React, TypeScript, and Vite that demonstrate
 
 ### Users Page
 
-![Users Page](/screenshots/users-page.png)
+![Users Page](/screenshots/user-page.png)
 
 ### User Detail
 
