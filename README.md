@@ -2,6 +2,32 @@
 
 A modern web application built with React, TypeScript, and Vite that demonstrates user and post management using the JSONPlaceholder API.
 
+## Screenshots
+
+### Users Page
+
+![Users Page](/screenshots/users-page.png)
+
+### User Detail
+
+![User Detail](/screenshots/user-detail-page.png)
+
+### Posts Page
+
+![Posts Page](/screenshots/posts-page.png)
+
+### Post Detail
+
+![Post Detail](/screenshots/post-detail-page.png)
+
+### Create Post
+
+![Create Post](/screenshots/post-create-page.png)
+
+### Edit Post
+
+![Edit Post](/screenshots/post-editing-page.png)
+
 ## Features
 
 - 👥 User Management
