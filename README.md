@@ -66,6 +66,8 @@ src/
 ├── hooks/         # Custom React hooks
 ├── pages/         # Page components
 ├── services/      # API services
+├── store/         # Redux store configuration
+│   └── slices/    # Redux slices and reducers
 ├── types/         # TypeScript types
 └── config/        # Configuration files
 ```
