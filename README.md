@@ -86,7 +86,7 @@ npm run dev
 
 ## Project Structure
 
-````plaintext
+```plaintext
 src/
 ├── components/     # Reusable UI components
 ├── hooks/         # Custom React hooks
@@ -96,17 +96,17 @@ src/
 │   └── slices/    # Redux slices and reducers
 ├── types/         # TypeScript types
 └── config/        # Configuration files
-
-
+```
 
 ## Testing
 
 To run the E2E tests with Cypress:
 
 1. Start the development server:
+
 ```bash
 npm run dev
-````
+```
 
 2. In a separate terminal, run Cypress:
 
