@@ -96,6 +96,15 @@ src/
 │   └── slices/    # Redux slices and reducers
 ├── types/         # TypeScript types
 └── config/        # Configuration files
+
+cypress/           # E2E Testing
+├── e2e/          # Test specifications
+└── support/       # Test support files
+
+exercises/         # Technical test exercises from Nextia
+├── exercise-1.js  # State management optimization
+├── exercise-2.js  # useEffect and API calls
+└── exercise-3.js  # Component reusability
 ```
 
 ## Testing
